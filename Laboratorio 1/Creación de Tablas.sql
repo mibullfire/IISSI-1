@@ -49,14 +49,14 @@ CREATE TABLE Groups(
 );
 
 CREATE TABLE Students(
-			studentsId INT NOT NULL AUTO_INCREMENT,
+			studentId INT NOT NULL AUTO_INCREMENT,
 			accessMethod VARCHAR(30) NOT NULL,
 			dni CHAR(9) NOT NULL UNIQUE, -- char es el numero de caracteres
 			firstName VARCHAR(100) NOT NULL,
 			surname VARCHAR(100) NOT NULL,
 			birthDate DATE NOT NULL, -- para un dia y datetime para fecha y hora
 			email VARCHAR(250) NOT NULL UNIQUE,
-			PRIMARY KEY (studentsId)
+			PRIMARY KEY (studentId)
 );
 
 -- Tabla intermedia que relaciona a los grupos con los estudiantes:
@@ -64,11 +64,11 @@ CREATE TABLE Students(
 CREATE TABLE GroupsStudents(
 		   groupStudentId INT AUTO_INCREMENT, -- id propio de cada uno
 		   groupId INT, -- grupo al que hace referencia
-		   studentsId INT, -- estudiante que esta en ese grupo
+		   studentId INT, -- estudiante que esta en ese grupo
 		   PRIMARY KEY (groupStudentId), 
 		   FOREIGN KEY (groupId) REFERENCES Groups (groupId),
-		   FOREIGN KEY (studentsId) REFERENCES Students (studentsId),
-		   UNIQUE (groupId, studentsId)
+		   FOREIGN KEY (studentId) REFERENCES Students (studentId),
+		   UNIQUE (groupId, studentId)
 );
 
 CREATE TABLE Grades(
@@ -77,12 +77,12 @@ CREATE TABLE Grades(
 		   -- decimal 0000 | 0000 , 0000 | 0000 el 4 es el numero total de digitos que puede tener y el 2 cuantos de ellos son decimales
 		   gradeCall INT NOT NULL,
 		   withHonours BOOLEAN NOT NULL, -- boolean es lo mismo que escribir INT(1)
-			studentsId INT NOT NULL,
+			studentId INT NOT NULL,
 		   groupId INT NOT NULL,
 		   PRIMARY KEY (gradeId),
-		   FOREIGN KEY (studentsId) REFERENCES Students (studentsId),
+		   FOREIGN KEY (studentId) REFERENCES Students (studentId),
 		   FOREIGN KEY (groupId) REFERENCES Groups (groupId),
 		   CONSTRAINT invalidGradeValue CHECK (value BETWEEN 0 AND 10),
 		   CONSTRAINT invalidGradeCall CHECK (gradeCall BETWEEN 1 AND 3),
-		   CONSTRAINT RN_002_duplicateCallGrade UNIQUE (gradeCall, studentsId, groupId)
+		   CONSTRAINT RN_002_duplicateCallGrade UNIQUE (gradeCall, studentId, groupId)
 );
