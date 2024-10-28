@@ -87,3 +87,21 @@ SELECT persona FROM (Personas NATURAL JOIN Aficiones)
 GROUP BY idpersona,persona
 HAVING COUNT(*) = ( SELECT COUNT(*) AS na FROM Aficiones GROUP BY idpersona ORDER
 BY 1 DESC LIMIT 1);
+
+
+-- EXTRA
+-- Parejas de personas que comparten algún hobby
+SELECT DISTINCT AF1.idpersona, AF2.idpersona 
+FROM Aficiones AF1, Aficiones AF2
+WHERE AF1.hobby = AF2.hobby
+AND AF1.idpersona = AF2.idpersona;
+
+-- Con esto sacamos además los nombres de las personas 
+SELECT DISTINCT P1.persona, P2.persona
+FROM Aficiones AF1, Aficiones AF2, Personas P1, Personas P2
+WHERE AF1.hobby = AF2.hobby
+AND AF1.idpersona < AF2.idpersona
+AND AF1 idpersona = P1.idpersona
+AND AF2.idpersona = P2.idpersona;
+
+-- Tenemos pues el producto cartesiano de las personas que comparten al menos un hobby
