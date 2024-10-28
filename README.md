@@ -10,6 +10,10 @@ En la carpeta `Clases Teóricas`se incluye código y explicaciones de las clases
 - 24-10-21: Explicación, resumen y ejemplos del Tema 9: Álgebra Relacional
 - ...
 
-En la carpeta `Laboratorios` ...
+En la carpeta `Laboratorios` están las prácticas de laboratorio resueltas divididas por carpertas; así como un carpeta `doc` que contiene la documentación necesaria.
 
-En la carpeta Problemas SQL ...
+En la carpeta `Problemas SQL` se recogen una serie de problemas con sus respectivas soluciones. Estos problemas están subidos en la `ev`, y son de gran ayuda para practicar las consultas de SQL, desde un nivel incial, hasta un nivel elevado, en cuanto a lo que vemos en este curso se refiere.
+
+- El ejercicio `Hobbies` ha sido resuelto en la clase del día `28-10-2024` y contiene algunas explicaciones extras y varias formas diferentes de hacer algunas consultas.
+
+###### Cualquier fallo / duda / sugerencia contactar conmigo por correo electrónico: `mibullfire@icloud.com`
