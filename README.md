@@ -8,7 +8,8 @@ En la carpeta `Clases Teóricas`se incluye código y explicaciones de las clases
 
 - 24-10-14: Estrucura básica e introducción a SQL
 - 24-10-21: Explicación, resumen y ejemplos del Tema 9: Álgebra Relacional
-- ...
+- 24-11-04: Explicación, resumen y ejemplos del Tema 10: SQL Avanzado
+...
 
 En la carpeta `Laboratorios` están las prácticas de laboratorio resueltas divididas por carpertas; así como un carpeta `doc` que contiene la documentación necesaria.
 
