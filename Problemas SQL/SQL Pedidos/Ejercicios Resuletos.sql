@@ -1,3 +1,6 @@
+-- Nota: este archivo tiene consultas varias y con errores,
+-- para probar el código, las soluciones reales están en README.md
+
 -- Usuarios de Málaga y Sevilla
 
 SELECT NAME FROM users
