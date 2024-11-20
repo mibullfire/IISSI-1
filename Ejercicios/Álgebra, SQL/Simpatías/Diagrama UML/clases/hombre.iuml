@@ -1,0 +1,3 @@
+class Hombre <<Entidad>>{
+    h: persona
+}

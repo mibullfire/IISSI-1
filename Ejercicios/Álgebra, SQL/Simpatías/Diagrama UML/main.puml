@@ -1,0 +1,11 @@
+@startuml Examen 1
+title Figura 1: Diagrama de Clases
+
+!include clases/hombre.iuml
+!include clases/mujer.iuml
+
+Hombre "*" -- "*" Mujer : Simpatías
+Hombre "*" -l- "*" Mujer : Antipatías
+
+
+@enduml
