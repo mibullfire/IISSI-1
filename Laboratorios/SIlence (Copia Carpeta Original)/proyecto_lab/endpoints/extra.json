@@ -1,0 +1,13 @@
+{
+    "getByDegree": {
+    "route": "/degrees/$degreeId/subjects"
+    ,
+    "method": "GET"
+    ,
+    "sql": "SELECT * FROM Subjects WHERE degreeId = $degreeId",
+    "auth_required": false,
+    "allowed_roles": ["*"],
+    "description": "Gets the subjects of a degree"
+        
+    }
+}
