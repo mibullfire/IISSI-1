@@ -114,8 +114,23 @@ DELIMITER ;
 Si escribimos:
 ```sql
 UPDATE Grades SET value = 10 WHERE gradeId = 6;
-````
+```
 El trigger se enciende y salta el error.
 
-# Nota: falta la ulima funcion.
-### 3. hola
+
+### 3. Modificar el último disparador para que, en vez de lanzarse un error, la nota sólo sea aumentada en 4 puntos:
+```sql
+DELIMITER //
+CREATE OR REPLACE TRIGGER RN004_triggerGradesChangeDifference
+BEFORE UPDATE ON Grades
+FOR EACH ROW
+BEGIN
+    DECLARE difference DECIMAL(4,2);
+    SET difference = new.value - old.value;
+
+    IF(difference >4) THEN
+        SET new.value = old.value + 4;
+    END IF;
+END//
+DELIMITER ;
+```
