@@ -1,5 +1,7 @@
 # Arreglar
 
+# Me da pereza hacer todo este codigo porque son demasiados errores, no hacer caso al MD
+
 ## tables.sql
 Registro de cambios:
 
