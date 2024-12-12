@@ -1,0 +1,12 @@
+{
+    "lista": {
+        "description": "Gets all entries from 'aceituna'",
+        "route": "/aceituna/list",
+        "method": "GET",
+        "sql": "SELECT aceituna FROM aceituna",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}

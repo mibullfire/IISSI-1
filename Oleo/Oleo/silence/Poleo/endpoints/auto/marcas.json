@@ -1,0 +1,60 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'marcas'",
+        "route": "/marcas",
+        "method": "GET",
+        "sql": "SELECT * FROM marcas",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getById": {
+        "description": "Gets an entry from 'marcas' by its primary key",
+        "route": "/marcas/$marcaId",
+        "method": "GET",
+        "sql": "SELECT * FROM marcas WHERE marcaId = $marcaId",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "create": {
+        "description": "Creates a new entry in 'marcas'",
+        "route": "/marcas",
+        "method": "POST",
+        "sql": "INSERT INTO marcas (DO, marca) VALUES ($DO, $marca)",
+        "request_body_params": [
+            "DO",
+            "marca"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "update": {
+        "description": "Updates an existing entry in 'marcas' by its primary key",
+        "route": "/marcas/$marcaId",
+        "method": "PUT",
+        "sql": "UPDATE marcas SET DO = $DO, marca = $marca WHERE marcaId = $marcaId",
+        "request_body_params": [
+            "DO",
+            "marca"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "delete": {
+        "description": "Deletes an existing entry in 'marcas' by its primary key",
+        "route": "/marcas/$marcaId",
+        "method": "DELETE",
+        "sql": "DELETE FROM marcas WHERE marcaId = $marcaId",
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}

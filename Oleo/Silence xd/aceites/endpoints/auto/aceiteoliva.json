@@ -1,0 +1,68 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'aceiteoliva'",
+        "route": "/aceiteoliva",
+        "method": "GET",
+        "sql": "SELECT * FROM aceiteoliva",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getById": {
+        "description": "Gets an entry from 'aceiteoliva' by its primary key",
+        "route": "/aceiteoliva/$aceiteID",
+        "method": "GET",
+        "sql": "SELECT * FROM aceiteoliva WHERE aceiteID = $aceiteID",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "create": {
+        "description": "Creates a new entry in 'aceiteoliva'",
+        "route": "/aceiteoliva",
+        "method": "POST",
+        "sql": "INSERT INTO aceiteoliva (aceite, tipoAceite, acidez, precioLitro, marcaID, aceitunaID) VALUES ($aceite, $tipoAceite, $acidez, $precioLitro, $marcaID, $aceitunaID)",
+        "request_body_params": [
+            "aceite",
+            "tipoAceite",
+            "acidez",
+            "precioLitro",
+            "marcaID",
+            "aceitunaID"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "update": {
+        "description": "Updates an existing entry in 'aceiteoliva' by its primary key",
+        "route": "/aceiteoliva/$aceiteID",
+        "method": "PUT",
+        "sql": "UPDATE aceiteoliva SET aceite = $aceite, tipoAceite = $tipoAceite, acidez = $acidez, precioLitro = $precioLitro, marcaID = $marcaID, aceitunaID = $aceitunaID WHERE aceiteID = $aceiteID",
+        "request_body_params": [
+            "aceite",
+            "tipoAceite",
+            "acidez",
+            "precioLitro",
+            "marcaID",
+            "aceitunaID"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "delete": {
+        "description": "Deletes an existing entry in 'aceiteoliva' by its primary key",
+        "route": "/aceiteoliva/$aceiteID",
+        "method": "DELETE",
+        "sql": "DELETE FROM aceiteoliva WHERE aceiteID = $aceiteID",
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}

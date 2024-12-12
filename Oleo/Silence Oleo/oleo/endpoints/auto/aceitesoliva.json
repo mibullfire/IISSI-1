@@ -1,0 +1,62 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'aceitesoliva'",
+        "route": "/aceitesoliva",
+        "method": "GET",
+        "sql": "SELECT * FROM aceitesoliva",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getById": {
+        "description": "Gets an entry from 'aceitesoliva' by its primary key",
+        "route": "/aceitesoliva/$aceiteID",
+        "method": "GET",
+        "sql": "SELECT * FROM aceitesoliva WHERE aceiteID = $aceiteID",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "create": {
+        "description": "Creates a new entry in 'aceitesoliva'",
+        "route": "/aceitesoliva",
+        "method": "POST",
+        "sql": "INSERT INTO aceitesoliva (marcaID, aceite, tipoAceite) VALUES ($marcaID, $aceite, $tipoAceite)",
+        "request_body_params": [
+            "marcaID",
+            "aceite",
+            "tipoAceite"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "update": {
+        "description": "Updates an existing entry in 'aceitesoliva' by its primary key",
+        "route": "/aceitesoliva/$aceiteID",
+        "method": "PUT",
+        "sql": "UPDATE aceitesoliva SET marcaID = $marcaID, aceite = $aceite, tipoAceite = $tipoAceite WHERE aceiteID = $aceiteID",
+        "request_body_params": [
+            "marcaID",
+            "aceite",
+            "tipoAceite"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "delete": {
+        "description": "Deletes an existing entry in 'aceitesoliva' by its primary key",
+        "route": "/aceitesoliva/$aceiteID",
+        "method": "DELETE",
+        "sql": "DELETE FROM aceitesoliva WHERE aceiteID = $aceiteID",
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}

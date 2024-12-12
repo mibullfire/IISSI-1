@@ -1,0 +1,152 @@
+
+### This is an auto-generated test suite, it needs to be completed with valid data.
+### These are not all tests you need, more of them should be created to evaluate the functional
+### requirements of your project. These tests only test the CRUD endpoints of the entity.
+### Silence is a DEAL research team project, more info about us in https://deal.us.es
+@BASE = http://127.0.0.1:8080/api/v1
+
+### Auxiliary query
+### Positive test
+### Test 00: Get all existing aceiteoliva
+### This query is used in several of the below tests it should be executed first.
+# @name aceiteoliva
+GET {{BASE}}/aceiteoliva
+
+### Login a(n) users and save the generated token 
+### This token is used in several of the below tests it should be executed second.
+# @name login
+POST {{BASE}}/login 
+Content-Type: application/json 
+
+{ 
+	"username": ###REPLACE###,
+	"password": ###REPLACE###
+}
+
+###
+@token = {{login.response.body.sessionToken}}
+
+
+### TESTS BEGIN
+
+### Test 01: Get one existing aceiteoliva by its id.
+### positive test 
+@aceId = {{aceiteoliva.response.body.0.aceiteID}}
+GET {{BASE}}/aceiteoliva/{{aceId}} 
+Content-Type: application/json 
+
+
+### Test 02: Try get one existing aceiteoliva by its nonexistent id.
+### negative test 
+GET {{BASE}}/aceiteoliva/999999999
+Content-Type: application/json 
+
+
+### Test 03: Add a new aceiteoliva successfully
+### Positive test 
+### We assume that the token has been aquired by the login request.
+# @name newaceiteoliva
+POST {{BASE}}/aceiteoliva 
+Content-Type: application/json 
+Token: {{token}} 
+
+{
+	"aceite": ###REPLACE###,
+	"tipoAceite": ###REPLACE###,
+	"acidez": ###REPLACE###,
+	"precioLitro": ###REPLACE###,
+	"marcaID": ###REPLACE###,
+	"aceitunaID": ###REPLACE###
+} 
+
+### Check the created aceiteoliva
+
+@newaceiteolivaid = {{newaceiteoliva.response.body.lastId}}
+GET {{BASE}}/aceiteoliva/{{newaceiteolivaid}}
+Content-Type: application/json 
+
+### Test 04: Add a new aceiteoliva without a session token
+### Negative test 
+POST {{BASE}}/aceiteoliva 
+Content-Type: application/json 
+
+{ 
+	"aceite": ###REPLACE###,
+	"tipoAceite": ###REPLACE###,
+	"acidez": ###REPLACE###,
+	"precioLitro": ###REPLACE###,
+	"marcaID": ###REPLACE###,
+	"aceitunaID": ###REPLACE###
+}
+
+### Test 05: Modify an existing aceiteoliva 
+### Positive test 
+@aceId = {{aceiteoliva.response.body.0.aceiteID}} 
+PUT {{BASE}}/aceiteoliva/{{aceId}} 
+Content-Type: application/json 
+Token: {{token}} 
+
+{ 
+	"aceite": ###REPLACE###,
+	"tipoAceite": ###REPLACE###,
+	"acidez": ###REPLACE###,
+	"precioLitro": ###REPLACE###,
+	"marcaID": ###REPLACE###,
+	"aceitunaID": ###REPLACE###
+}
+
+### Check the modified aceiteoliva
+
+GET {{BASE}}/aceiteoliva/{{newaceiteolivaid}}
+Content-Type: application/json 
+
+### Test 06: Try to modify an existing aceiteoliva without a session token
+### Negative test
+@aceId = {{aceiteoliva.response.body.0.aceiteID}}
+PUT {{BASE}}/aceiteoliva/{{aceId}}
+Content-Type: application/json
+
+{
+	"aceite": ###REPLACE###,
+	"tipoAceite": ###REPLACE###,
+	"acidez": ###REPLACE###,
+	"precioLitro": ###REPLACE###,
+	"marcaID": ###REPLACE###,
+	"aceitunaID": ###REPLACE###
+}
+
+### Test 07: Delete an existing aceiteoliva
+### Positive test
+
+### Create a new aceiteoliva, which we will delete
+# @name createdaceToDelete
+POST {{BASE}}/aceiteoliva
+Content-Type: application/json
+Token: {{token}}
+
+{
+	"aceite": ###REPLACE###,
+	"tipoAceite": ###REPLACE###,
+	"acidez": ###REPLACE###,
+	"precioLitro": ###REPLACE###,
+	"marcaID": ###REPLACE###,
+	"aceitunaID": ###REPLACE###
+}
+
+### Check the created aceiteoliva
+@acedelId = {{createdaceToDelete.response.body.lastId}}
+GET {{BASE}}/aceiteoliva/{{acedelId}}
+Content-Type: application/json 
+
+### Delete the aceiteoliva
+DELETE {{BASE}}/aceiteoliva/{{acedelId}}
+Token: {{token}}
+
+### Check the deleted aceiteoliva
+GET {{BASE}}/aceiteoliva/{{acedelId}}
+Content-Type: application/json 
+
+### Test 08: Try to delete a aceiteoliva without a session token
+### Negative test
+DELETE {{BASE}}/aceiteoliva/{{aceId}}
+

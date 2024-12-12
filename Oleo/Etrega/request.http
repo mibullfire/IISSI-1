@@ -1,0 +1,36 @@
+@BASE = http://127.0.0.1:8080/api/v1
+###
+@token = E9GDE0ScnHTi3WFLyZj2jelK2jX15k0g7RG5ypM3VaI
+
+### Listado de Aceitunas
+GET {{BASE}}/aceituna
+
+### Listado de Aceites Oliva
+GET {{BASE}}/aceiteoliva
+
+### Prueba Rn0c
+POST {{BASE}}/aceiteoliva 
+Content-Type: application/json 
+Token: {{token}} 
+
+{
+	"aceite": "Aceite Malo Malo",
+	"tipoAceite": "AOO",
+	"acidez": "0.2",
+	"precioLitro": "20",
+	"marcaID": "1",
+	"aceitunaID": "2"
+}
+### Prueba Rn0d
+POST {{BASE}}/aceiteoliva 
+Content-Type: application/json 
+Token: {{token}} 
+
+{
+	"aceite": "Aceite Malo Malo",
+	"tipoAceite": "AOV",
+	"acidez": "0.2",
+	"precioLitro": "20",
+	"marcaID": "1",
+	"aceitunaID": "NULL"
+}

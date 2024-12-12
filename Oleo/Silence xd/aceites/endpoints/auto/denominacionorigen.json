@@ -1,0 +1,58 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'denominacionorigen'",
+        "route": "/denominacionorigen",
+        "method": "GET",
+        "sql": "SELECT * FROM denominacionorigen",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getById": {
+        "description": "Gets an entry from 'denominacionorigen' by its primary key",
+        "route": "/denominacionorigen/$denominacionID",
+        "method": "GET",
+        "sql": "SELECT * FROM denominacionorigen WHERE denominacionID = $denominacionID",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "create": {
+        "description": "Creates a new entry in 'denominacionorigen'",
+        "route": "/denominacionorigen",
+        "method": "POST",
+        "sql": "INSERT INTO denominacionorigen (denominacion) VALUES ($denominacion)",
+        "request_body_params": [
+            "denominacion"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "update": {
+        "description": "Updates an existing entry in 'denominacionorigen' by its primary key",
+        "route": "/denominacionorigen/$denominacionID",
+        "method": "PUT",
+        "sql": "UPDATE denominacionorigen SET denominacion = $denominacion WHERE denominacionID = $denominacionID",
+        "request_body_params": [
+            "denominacion"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "delete": {
+        "description": "Deletes an existing entry in 'denominacionorigen' by its primary key",
+        "route": "/denominacionorigen/$denominacionID",
+        "method": "DELETE",
+        "sql": "DELETE FROM denominacionorigen WHERE denominacionID = $denominacionID",
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}

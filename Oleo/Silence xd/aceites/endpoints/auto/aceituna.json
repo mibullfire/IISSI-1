@@ -1,0 +1,58 @@
+{
+    "getAll": {
+        "description": "Gets all entries from 'aceituna'",
+        "route": "/aceituna",
+        "method": "GET",
+        "sql": "SELECT * FROM aceituna",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "getById": {
+        "description": "Gets an entry from 'aceituna' by its primary key",
+        "route": "/aceituna/$aceitunaID",
+        "method": "GET",
+        "sql": "SELECT * FROM aceituna WHERE aceitunaID = $aceitunaID",
+        "auth_required": false,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "create": {
+        "description": "Creates a new entry in 'aceituna'",
+        "route": "/aceituna",
+        "method": "POST",
+        "sql": "INSERT INTO aceituna (aceituna) VALUES ($aceituna)",
+        "request_body_params": [
+            "aceituna"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "update": {
+        "description": "Updates an existing entry in 'aceituna' by its primary key",
+        "route": "/aceituna/$aceitunaID",
+        "method": "PUT",
+        "sql": "UPDATE aceituna SET aceituna = $aceituna WHERE aceitunaID = $aceitunaID",
+        "request_body_params": [
+            "aceituna"
+        ],
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    },
+    "delete": {
+        "description": "Deletes an existing entry in 'aceituna' by its primary key",
+        "route": "/aceituna/$aceitunaID",
+        "method": "DELETE",
+        "sql": "DELETE FROM aceituna WHERE aceitunaID = $aceitunaID",
+        "auth_required": true,
+        "allowed_roles": [
+            "*"
+        ]
+    }
+}
